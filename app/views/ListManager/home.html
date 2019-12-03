@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="ui container">
+    <div class="ui two column grid">
+        <div class="column">
+            <div class="ui segments">
+                <div class="ui segment">
+                    <p>Listes</p>
+                </div>
+                <div class="ui segments">
+                    <table class="top attached ui basic table">
+                        <thead>
+                        <th>Nom</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        </thead>
+                        <tbody>
+                        {% for slate in slates %}
+                        <tr>
+                            <td>{{slate.title}}</td>
+                            <td>
+                                <form action="ListManager/afficheItems/{{slate.id}}">
+                                <input type="submit" value="Voir" />
+                                </form>
+                            </td>
+                            <td>
+                                <form action="ListManager/afficheItems/{{slate.id}}">
+                                    <input type="submit" value="Modifier" />
+                                </form>
+                            </td>
+                            <td>
+                                <form action="ListManager/deleteSlate/{{slate.id}}">
+                                    <input type="submit" value="Supprimer" />
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        <div class="column">
+            <div class="ui segments">
+                <div class="ui segment">
+                </div>
+            </div>
+        </div>
+     </div>
+</div>
+
+
+
+{% endblock %}

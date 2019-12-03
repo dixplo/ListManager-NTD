@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+
+<form action="ListManager/newslate" method="post">
+    <div class="ui segment">
+        <label for="title">Title :</label>
+        <input type="text" id="title" name="title">
+    </div>
+    <div class="ui segment">
+        <label for="description">Description :</label>
+        <input type="text" id="description" name="description">
+    </div>
+    <div class="ui segment">
+        id du user:
+        <select id="iduser" name="iduser">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+    </div>
+    <div class="ui segment">
+        id du template :
+        <select id="idtemp" name="idtemp">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+    </div>
+    <button type="submit" value="Submit">Create</button>
+</form>
+
+{% endblock %}
