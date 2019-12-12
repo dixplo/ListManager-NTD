@@ -49,6 +49,7 @@ class ListManager extends ControllerBase{
         //validbtn = id bouton submit du form, formadd = id du formulaire, permet d'executer du js au click du bouton du formulaire
         $this->jquery->postFormOnClick("#validbtn", "ListManager/newItem", "formadd", "#recepteur");
         // Preparation en jquery pour l'affichage des items sans actualisation
+        $this->jquery->getHref("._delete", "#recepteur", ["historize"=>false]);
         $this->jquery->renderView('ListManager/printItem.html',['items'=>$items]);
 	}
 
@@ -83,24 +84,25 @@ class ListManager extends ControllerBase{
 
     public function newItem(){
         
-        $itemL = URequest::post('itemL');
-        $slate= DAO::getOne(Slate::class,USession::get("activeSlate"));
+        $itemL = URequest::post('itemL'); //récupération des items par rapport à la session
+        $slate= DAO::getOne(Slate::class,USession::get("activeSlate")); 
         
         $item = new Item();
         //$item->setChecked(false);
-        $item->setLabel($itemL);
+        $item->setLabel($itemL); 
         $item->setUser(USession::get("activeUser"));
         $item->setSlate($slate);
         DAO::save($item);
         
         $this->afficheItems($slate->getId());
     }
+    
 
     public function deleteItem($idItem){
         DAO::delete(Item::class,$idItem);
         $slate= DAO::getOne(Slate::class,USession::get("activeSlate"));
         
-        $this->jquery->getHref("._deletebtn", null, ["historize"=>false]);
+        
         $this->afficheItems($slate->getId());
     }
 
