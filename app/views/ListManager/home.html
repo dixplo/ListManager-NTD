@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="ui container">
+    <div class="ui two column grid">
+        <div class="column">
+            <div class="ui segments">
+                <div class="ui segment">
+                    <p>Listes</p>
+                </div>
+                <div class="ui segments">
+                    <table class="top attached ui basic table">
+                        <thead>
+                        <th>Nom</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        </thead>
+                        <tbody>
+                        {% for slate in slates %}
+                        <tr>
+                          <td>{{slate.title}}</td>
+                            <td>
+                                <a  class ="ui button _listes" href="ListManager/afficheItems/{{slate.id}}" data-target="#recepteur">
+                                    <!-- le data-target cible la div de réception (où l'on veut afficher le code) -->
+                                    Voir
+                                    <!-- Appel de la requête -->
+                                </a>
+                            </td>
+                            <td>
+                                <a class ="ui button" >
+                                    modifier
+                                </a>
+                            </td>
+                            <td>
+                                <a class ="ui button" href="ListManager/deleteSlate/{{slate.id}}">
+                                    supprimer
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="ui segment">
+                    <p>Listes partagées avec moi</p>
+                </div>
+                <div class="ui segments">
+                    <table class="top attached ui basic table">
+                        <thead>
+                        <th>Nom</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        </thead>
+                        <tbody>
+                        {% for slate in slates %}
+                        <tr>
+                          <td>{{slate.title}}</td>
+                            <td>
+                                <a  class ="ui button _listes" href="ListManager/afficheItems/{{slate.id}}" data-target="#recepteur">
+                                    <!-- le data-target cible la div de réception (où l'on veut afficher le code) -->
+                                    Voir
+                                    <!-- Appel de la requête -->
+                                </a>
+                            </td>
+                            <td>
+                                <a class ="ui button" >
+                                    modifier
+                                </a>
+                            </td>
+                            <td>
+                                <a class ="ui button" href="ListManager/deleteSlate/{{slate.id}}">
+                                    supprimer
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui segments">
+                <div class="ui segment" id="recepteur">
+                    <h1>  </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{script_foot|raw}} <!-- Execution du javascript -->
+{% endblock %}

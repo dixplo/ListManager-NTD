@@ -1,0 +1,34 @@
+<form class="ui form container" action="ListManager/newItem" method="post" id="formadd">
+    <div class="fields">
+    <div class="field">
+        <input type="text" placeholder="Item Name" name="itemL" >
+    </div>
+        <div class="field">
+    <button class="ui secondary button" type="submit" value="Submit" id="validbtn">Ajouter</button> <!-- BOUTON D'AJOUT D'ITEMS -->
+        </div>
+    </div>
+</form>
+
+    {% for item in items %}
+        <div class="ui horizontal segments">
+            <div class="ui segment">
+                <p>{{item.label}}</p>
+            </div>
+            <div class="ui segment">
+                <p>{{item.DateC}}</p>
+            </div>
+            <div class="ui segment">
+                <p>{{item.DateM}}</p>
+            </div>
+            <div class="ui left floated compact segment">
+                <div class="ui fitted checkbox">
+                    <input type="checkbox" value="{{item.checked}}" href="ListManager/checkItem/{{item.id}}">
+                    <label></label>
+                </div>
+            </div>
+                <a class="ui secondary button" class="_delete" href="ListManager/deleteItem/{{item.id}}" id="_deletebtn">Supprimer</a>
+
+        </div>
+        
+    {% endfor %}
+{{script_foot|raw}}
